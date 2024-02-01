@@ -1,11 +1,12 @@
+import { Header } from '@/widgets/Header';
 import { Suspense } from 'react';
-import './App.scss';
 import AppRouter from './providers/router/ui/AppRouter';
 
 function App() {
   return (
     <>
       <Suspense fallback=''>
+        <Header />
         <AppRouter />
       </Suspense>
     </>

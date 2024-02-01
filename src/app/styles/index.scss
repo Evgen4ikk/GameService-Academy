@@ -1,0 +1,8 @@
+@import 'reset';
+@import 'variables/global';
+
+body {
+  background-color: var(--darkBg);
+  color: var(--white);
+}
+

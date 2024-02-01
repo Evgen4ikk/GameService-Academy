@@ -1,0 +1,68 @@
+.filterMenu {
+  width: 20%;
+  padding: 0 10px 10px 10px;
+  .img {
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    border-radius: 6px;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .name {
+    font-size: 16px;
+    line-height: normal;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    margin: 7px 0;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    background-color: var(--darkBg);
+    outline: none;
+    border: none;
+    color: var(--white);
+    margin-bottom: 15px;
+    &:hover {
+      & > svg {
+        background-color: #777676;
+      }
+    }
+
+    & > svg {
+      color: #323131;
+      background-color: #514f4f;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 14px;
+      color: #676464;
+    }
+  }
+  h1 {
+    color: var(--white);
+    background-image: none;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 16px;
+    font-weight: 700;
+
+    &:hover {
+      color: #5d5d5d;
+      transition: all 0.2s ease-out;
+    }
+  }
+}

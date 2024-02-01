@@ -1,12 +1,9 @@
 import { memo, Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import {
-  AppRoutesProps,
-  routeConfig,
-} from '../../../../shared/config/RouteConfig';
+import { routeConfig } from '../../../../shared/config/RouteConfig';
 
 const AppRouter = () => {
-  const renderWithWrapper = useCallback((route: AppRoutesProps) => {
+  const renderWithWrapper = useCallback((route: any) => {
     const element = <Suspense fallback='Loading...'>{route.element}</Suspense>;
     return <Route key={route.path} path={route.path} element={element} />;
   }, []);
