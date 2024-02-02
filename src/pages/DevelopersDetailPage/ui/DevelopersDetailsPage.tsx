@@ -1,5 +1,9 @@
 import { FC } from 'react';
+import { useParams } from 'react-router';
 
 export const DevelopersDetailsPage: FC = () => {
-  return <div>DevelopersDetailsPage</div>;
+  const params = useParams();
+
+  console.log(params);
+  return <div>{params.id}</div>;
 };

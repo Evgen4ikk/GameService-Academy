@@ -1,4 +1,5 @@
 import { Header } from '@/widgets/Header';
+import { Sidebar } from '@/widgets/Sidebar';
 import { Suspense } from 'react';
 import AppRouter from './providers/router/ui/AppRouter';
 
@@ -7,7 +8,10 @@ function App() {
     <>
       <Suspense fallback=''>
         <Header />
-        <AppRouter />
+        <div className='container'>
+          <Sidebar />
+          <AppRouter />
+        </div>
       </Suspense>
     </>
   );

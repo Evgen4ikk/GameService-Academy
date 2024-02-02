@@ -1,3 +1,1 @@
-import { AppRoutes } from '../../../shared/config/RouteConfig';
-
-export { AppRoutes };
+export { AppRoutes } from '@/shared/config/RouteConfig';

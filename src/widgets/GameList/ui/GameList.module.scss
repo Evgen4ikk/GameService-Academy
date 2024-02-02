@@ -1,0 +1,11 @@
+.grid {
+  display: grid;
+  grid-gap: 0 24px;
+  grid-template-columns: repeat(3, 380px);
+}
+
+.pagination {
+  width: 100%;
+  height: 100px;
+  background-color: red;
+}

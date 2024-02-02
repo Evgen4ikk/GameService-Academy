@@ -33,7 +33,7 @@ export const routeConfig: Record<AppRoutes, any> = {
     element: <DevelopersPage />,
   },
   [AppRoutes.DEVELOPERS_DETAILS]: {
-    path: `${RoutePath.developers_details}:slug`,
+    path: `${RoutePath.developers_details}:slug/:id`,
     element: <DevelopersDetailsPage />,
   },
   [AppRoutes.GENRES]: {
@@ -41,11 +41,11 @@ export const routeConfig: Record<AppRoutes, any> = {
     element: <GenresPage />,
   },
   [AppRoutes.GENRES_DETAILS]: {
-    path: `${RoutePath.genres_details}:slug`,
+    path: `${RoutePath.genres_details}:slug/:id`,
     element: <GenresDetailPage />,
   },
   [AppRoutes.GAME]: {
-    path: RoutePath.game,
+    path: `${RoutePath.game}:slug/:id`,
     element: <GamePage />,
   },
 };

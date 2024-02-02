@@ -5,7 +5,7 @@ interface IGames {
   added: number;
 }
 
-export interface IGenresResult {
+export interface IDevelopersResult {
   id: number;
   name: string;
   slug: string;
@@ -14,9 +14,7 @@ export interface IGenresResult {
   games: IGames[];
 }
 
-export interface IGenres {
+export interface IDevelopers {
   count: number;
-  next: null;
-  previous: null;
-  results: IGenresResult[];
+  results: IDevelopersResult[];
 }

@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+  grid-gap: 0 24px;
+  grid-template-columns: repeat(3, 380px);
+}
+
+.title {
+  font-size: 68px;
+  line-height: 74px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}

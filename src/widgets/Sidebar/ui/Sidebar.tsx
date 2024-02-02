@@ -1,8 +1,10 @@
+import { useFetchDevelopers } from '@/pages/DevelopersPage/model/service/useFetchDevelopers';
+import { IDevelopersResult } from '@/pages/DevelopersPage/model/types/IDevelopers';
 import { useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import { useFetchData } from '../model/service/FetchData';
-import { IResponseResult } from '../model/types/IGenres';
+import { useFetchGenres } from '../model/service/UseFetchGenres';
+import { IGenresResult } from '../model/types/IGenres';
 import cls from './Sidebar.module.scss';
 
 const GENRE_URL =
@@ -15,12 +17,12 @@ export const Sidebar = () => {
     isLoading: isGenresLoading,
     data: genres,
     isError: isGenresError,
-  } = useFetchData(GENRE_URL);
+  } = useFetchGenres(GENRE_URL);
   const {
     isLoading: isDevelopersLoading,
     data: developers,
     isError: isDevelopersError,
-  } = useFetchData(DEVELOPERS_URL);
+  } = useFetchDevelopers(DEVELOPERS_URL);
 
   const [displayedGenres, setDisplayedGenres] = useState<number>(5);
   const [displayedDevelopers, setDisplayedDevelopers] = useState<number>(5);
@@ -56,9 +58,9 @@ export const Sidebar = () => {
               </Link>
               {genres.results
                 .slice(0, displayedGenres)
-                .map((genre: IResponseResult) => (
+                .map((genre: IGenresResult) => (
                   <div key={genre.id}>
-                    <Link to={`/genres/${genre.slug}`}>
+                    <Link to={`/genres/${genre.slug}/${genre.id}`}>
                       <div className={cls.item}>
                         <img
                           className={cls.img}
@@ -100,9 +102,9 @@ export const Sidebar = () => {
               </Link>
               {developers.results
                 .slice(0, displayedDevelopers)
-                .map((developer: IResponseResult) => (
+                .map((developer: IDevelopersResult) => (
                   <div key={developer.id}>
-                    <Link to={`/developers/${developer.slug}`}>
+                    <Link to={`/developers/${developer.slug}/${developer.id}`}>
                       <div className={cls.item}>
                         <img
                           className={cls.img}
