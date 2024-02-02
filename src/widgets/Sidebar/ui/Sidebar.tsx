@@ -60,7 +60,7 @@ export const Sidebar = () => {
                 .slice(0, displayedGenres)
                 .map((genre: IGenresResult) => (
                   <div key={genre.id}>
-                    <Link to={`/genres/${genre.slug}/${genre.id}`}>
+                    <Link to={`/genre/${genre.slug}/${genre.id}`}>
                       <div className={cls.item}>
                         <img
                           className={cls.img}

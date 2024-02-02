@@ -19,7 +19,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.DEVELOPERS]: '/developers',
   [AppRoutes.DEVELOPERS_DETAILS]: '/developers/', // /+slug
   [AppRoutes.GENRES]: '/genres',
-  [AppRoutes.GENRES_DETAILS]: '/genres/', // /+slug
+  [AppRoutes.GENRES_DETAILS]: '/genre/', // /+slug
   [AppRoutes.GAME]: '/game/', // /+slug
 };
 
