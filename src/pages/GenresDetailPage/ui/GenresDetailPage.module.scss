@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+  margin: 0 5%;
+  .game {
+    display: flex;
+    justify-content: space-between;
+
+    .information {
+      margin-right: 60px;
+      width: 50%;
+    }
+
+    .images {
+      width: 50%;
+      img {
+        width: 90%;
+      }
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .item {
+      margin-left: 15px;
+      font-size: 24px;
+      color: #adadad;
+    }
+
+    .info {
+      margin: 10px 0;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-gap: 0 24px;
+    grid-template-columns: repeat(3, 380px);
+  }
+
+  .name {
+    font-size: 72px;
+    line-height: 74px;
+    font-weight: 700;
+  }
+
+  .heading {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px 0;
+  }
+}
