@@ -54,20 +54,24 @@ export const GamePage: FC = () => {
                   <span className={cls.title}>Average playtime: </span>
                   <span className={cls.item}>{game.playtime} h</span>
                 </div>
-                <div className={cls.info}>
-                  <span className={cls.title}>Genres: </span>
-                  <span className={cls.item}>
-                    {game.genres.map(genre => (
-                      <Link
-                        key={genre.id}
-                        className={cls.genre_name}
-                        to={`/genre/${genre.slug}/${genre.id}`}
-                      >
-                        <span>{genre.name}</span>
-                      </Link>
-                    ))}
-                  </span>
-                </div>
+                {game.genres && (
+                  <>
+                    <div className={cls.info}>
+                      <span className={cls.title}>Genres: </span>
+                      <span className={cls.item}>
+                        {game.genres.map(genre => (
+                          <Link
+                            key={genre.id}
+                            className={cls.genre_name}
+                            to={`/genre/${genre.slug}/${genre.id}`}
+                          >
+                            <span>{genre.name}</span>
+                          </Link>
+                        ))}
+                      </span>
+                    </div>
+                  </>
+                )}
                 <div className={cls.info}>
                   <span className={cls.title}>Platforms: </span>
                   <span className={cls.item}>

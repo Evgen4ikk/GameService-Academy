@@ -1,0 +1,21 @@
+.list {
+  padding: 10px 0;
+
+  display: flex;
+  align-items: center;
+
+  .image {
+    border-radius: 10px;
+  }
+
+  p {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 700;
+
+    &:hover {
+      color: #555;
+      transition: all 0.2s ease-in;
+    }
+  }
+}

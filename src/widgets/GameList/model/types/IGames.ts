@@ -73,3 +73,8 @@ export interface IGames {
   previous: string;
   results: IGamesResult[];
 }
+
+export interface IGameSort {
+  rating: number;
+  releaseDate: string;
+}

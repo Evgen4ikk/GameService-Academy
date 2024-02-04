@@ -1,1 +1,1 @@
-export { HeaderSearch } from './ui/HeaderSearch';
+export { HeaderSearch } from './ui/HeaderSearch/HeaderSearch';

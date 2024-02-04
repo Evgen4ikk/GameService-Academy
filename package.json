@@ -15,6 +15,7 @@
     "@mui/material": "^5.15.7",
     "antd": "^5.14.0",
     "compose-function": "^3.0.3",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.1",
     "react-dom": "^18.2.0",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@types/compose-function": "^0.0.33",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.13",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
