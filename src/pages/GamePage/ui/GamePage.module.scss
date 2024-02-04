@@ -1,11 +1,10 @@
 .container {
-  max-width: 960px;
   margin: 0 5%;
   .game {
     display: flex;
 
     .information {
-      margin-right: 60px;
+      margin-right: 30px;
     }
 
     .game_title {
@@ -21,7 +20,7 @@
     }
 
     .progressBar {
-      padding-bottom: 60px;
+      padding-bottom: 10px;
     }
 
     .rating {
@@ -83,5 +82,10 @@
     }
     line-height: 22px;
     font-size: 18px;
+  }
+
+  .images {
+    margin: auto 0;
+    width: 60%;
   }
 }

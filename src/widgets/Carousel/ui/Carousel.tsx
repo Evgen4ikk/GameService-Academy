@@ -1,42 +1,32 @@
 import { IImages } from '@/pages/GamePage/model/types/IImages';
-import { FC } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
+import { Image } from 'antd';
+import { FC, useState } from 'react';
+import cls from './Carousel.module.scss';
 
-interface CarouselProps {
-  images?: IImages;
+interface AlbumProps {
+  images: IImages;
 }
 
-export const Carousel: FC<CarouselProps> = ({ images }) => {
-  const settings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    dots: false,
-    centerMode: true,
-    centerPadding: '0px',
-    focusOnSelect: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-    ],
-  };
+export const Carousel: FC<AlbumProps> = ({ images }) => {
+  const [visibleImageGroup, setVisibleImageGroup] = useState(false);
 
   return (
-    <div>
-      <Slider {...settings}>
-        {images?.results.map((image, index) => (
-          <div key={index}>
-            <img src={image.image} alt={`Slide ${index}`} />
-          </div>
-        ))}
-      </Slider>
+    <div className={cls.carouselContainer}>
+      <Image.PreviewGroup
+        preview={{
+          visible: visibleImageGroup,
+          onVisibleChange: value => setVisibleImageGroup(value),
+        }}
+      >
+        <Image width='100%' src={images.results[0].image} />
+        <div className={cls.imageFlexContainer}>
+          {images.results.slice(1, images.results.length).map((img, index) => (
+            <div key={index} className={cls.imageContainer}>
+              <Image width='100px' src={img.image} />
+            </div>
+          ))}
+        </div>
+      </Image.PreviewGroup>
     </div>
   );
 };

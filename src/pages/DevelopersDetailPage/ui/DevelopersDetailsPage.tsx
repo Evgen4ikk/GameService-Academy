@@ -20,15 +20,11 @@ export const DevelopersDetailsPage: FC = () => {
 
   const GAMES_URL = `https://api.rawg.io/api/games?developers=${developer?.slug}&key=6183de2c4b9c4eafad12e8de768dc4aa`;
 
-  console.log(developer?.slug);
-
   const {
     isLoading: isGamesLoading,
     data: games,
     isError: isGamesError,
   } = FetchGamesByDeveloper(GAMES_URL);
-
-  console.log(games);
 
   return (
     <>

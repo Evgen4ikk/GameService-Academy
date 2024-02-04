@@ -1,5 +1,6 @@
 import { useFetchDevelopers } from '@/pages/DevelopersPage/model/service/useFetchDevelopers';
 import { IDevelopersResult } from '@/pages/DevelopersPage/model/types/IDevelopers';
+import Loader from '@/shared/ui/Loader/Loader';
 import { useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { Link } from 'react-router-dom';
@@ -46,9 +47,7 @@ export const Sidebar = () => {
   return (
     <div className={cls.filterMenu}>
       <div>
-        {isGenresLoading ? (
-          <p>Loading genres...</p>
-        ) : isGenresError ? (
+        {isGenresError ? (
           <p>Error loading genres</p>
         ) : (
           genres && (
@@ -90,9 +89,7 @@ export const Sidebar = () => {
         )}
       </div>
       <div>
-        {isDevelopersLoading ? (
-          <p>Loading developers...</p>
-        ) : isDevelopersError ? (
+        {isDevelopersError ? (
           <p>Error loading developers</p>
         ) : (
           developers && (

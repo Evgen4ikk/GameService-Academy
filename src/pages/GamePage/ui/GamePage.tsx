@@ -1,4 +1,5 @@
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
+import { Carousel } from '@/widgets/Carousel';
 import { ProgressBar } from '@/widgets/ProgressBar';
 import { FC } from 'react';
 import { useParams } from 'react-router';
@@ -114,14 +115,11 @@ export const GamePage: FC = () => {
                   ))}
                 </div>
               </div>
-              <div className={cls.images}>
-                <img
-                  width={348}
-                  height={216}
-                  src={game.background_image}
-                  alt=''
-                />
-              </div>
+              {images && (
+                <div className={cls.images}>
+                  <Carousel images={images} />
+                </div>
+              )}
             </div>
             <div className={cls.about_game}>
               <h3>About Game</h3>

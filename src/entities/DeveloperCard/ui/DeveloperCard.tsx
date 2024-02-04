@@ -18,7 +18,7 @@ export const DeveloperCard: FC<IDeveloperCard> = ({ developer }) => {
     >
       <div className={cls.container}>
         <Link
-          to={`/developer/${developer.slug}/${developer.id}`}
+          to={`/developers/${developer.slug}/${developer.id}`}
           className={cls.title}
         >
           {developer.name}
@@ -30,7 +30,7 @@ export const DeveloperCard: FC<IDeveloperCard> = ({ developer }) => {
         <div className={cls.line} />
         <ul className={cls.game_list}>
           {developer.games.slice(0, 3).map(game => (
-            <li className={cls.game_item}>
+            <li key={game.id} className={cls.game_item}>
               <Link to={`/game/${game.slug}/${game.id}`}>{game.name}</Link>
               <div className={cls.added}>
                 <span>{game.added}</span>

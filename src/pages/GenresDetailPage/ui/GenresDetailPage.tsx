@@ -26,8 +26,6 @@ export const GenresDetailPage: FC = () => {
     isError: isGamesError,
   } = FetchGamesByGenre(GAMES_URL);
 
-  console.log(games);
-
   return (
     <>
       {isGenreLoading ? (
