@@ -1,5 +1,6 @@
 .filterMenu {
-  width: 17%;
+  max-width: 17%;
+  margin-right: 30px;
   padding: 0 10px 10px 10px;
   .img {
     width: 32px;
@@ -64,5 +65,9 @@
       color: #5d5d5d;
       transition: all 0.2s ease-out;
     }
+  }
+
+  @media screen and (max-width: 976px) {
+    display: none;
   }
 }

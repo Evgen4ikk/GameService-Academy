@@ -1,5 +1,5 @@
 .card {
-  width: 380px;
+  width: 360px;
   border: none;
   border-radius: 15px;
   background-color: rgb(32, 32, 32);
@@ -23,6 +23,7 @@
     padding: 34px 26px;
     text-align: center;
     .title {
+      min-width: 300px;
       font-size: 26px;
       font-weight: 700;
     }

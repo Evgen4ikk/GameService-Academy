@@ -1,7 +1,12 @@
 .container {
   margin: 0 5%;
+  overflow-x: hidden;
   .game {
     display: flex;
+
+    .game_title_adp {
+      display: none;
+    }
 
     .information {
       margin-right: 30px;
@@ -14,7 +19,7 @@
     }
 
     .stat_title {
-      padding-right: 30px;
+      margin-right: 15px;
       font-size: 16px;
       font-weight: 700;
     }
@@ -87,5 +92,43 @@
   .images {
     margin: auto 0;
     width: 60%;
+    padding-right: 20px;
+  }
+
+  @media screen and (max-width: 1232px) {
+    .game {
+      display: block;
+
+      .game_title {
+        display: none;
+      }
+
+      .game_title_adp {
+        display: block;
+        font-size: 52px;
+        line-height: 74px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .images {
+        margin: auto 0;
+        width: 80%;
+      }
+
+      .title {
+        font-size: 22px;
+        font-weight: 700;
+      }
+    }
+
+    .about_game {
+      padding: 0 20px;
+      h3 {
+        font-size: 18px;
+        text-align: center;
+        padding: 20px 0;
+      }
+    }
   }
 }

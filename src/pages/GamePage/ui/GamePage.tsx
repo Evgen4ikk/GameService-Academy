@@ -1,3 +1,4 @@
+import Loader from '@/shared/ui/Loader/Loader';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Carousel } from '@/widgets/Carousel';
 import { ProgressBar } from '@/widgets/ProgressBar';
@@ -33,13 +34,19 @@ export const GamePage: FC = () => {
   return (
     <>
       {isGameLoading ? (
-        <p>Loading games...</p>
+        <Loader />
       ) : isGameError ? (
         <p>Error loading games</p>
       ) : (
         game && (
           <div className={cls.container}>
             <div className={cls.game}>
+              <div className={cls.game_title_adp}>{game.name}</div>
+              {images && (
+                <div className={cls.images}>
+                  <Carousel images={images} />
+                </div>
+              )}
               <div className={cls.information}>
                 <div className={cls.game_title}>{game.name}</div>
                 <div className={cls.rating}>
@@ -119,15 +126,10 @@ export const GamePage: FC = () => {
                   ))}
                 </div>
               </div>
-              {images && (
-                <div className={cls.images}>
-                  <Carousel images={images} />
-                </div>
-              )}
             </div>
             <div className={cls.about_game}>
               <h3>About Game</h3>
-              <div className=''>{game.description_raw}</div>
+              <div className={cls.description}>{game.description_raw}</div>
             </div>
           </div>
         )

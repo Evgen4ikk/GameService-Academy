@@ -35,7 +35,11 @@ export const GenresDetailPage: FC = () => {
       ) : (
         genre && (
           <div className={cls.container}>
-            <div className={cls.game}>
+            <div className={cls.genre}>
+              <div className={cls.genre_title_adp}>{genre.name}</div>
+              <div className={cls.images}>
+                <img width={300} src={genre.image_background} alt='' />
+              </div>
               <div className={cls.information}>
                 <div className={cls.name}>{genre.name}</div>
                 <div className={cls.info}>
@@ -54,26 +58,25 @@ export const GenresDetailPage: FC = () => {
                   </div>
                 )}
               </div>
-              <div className={cls.images}>
-                <img width={300} src={genre.image_background} alt='' />
-              </div>
             </div>
             <div className={cls.heading}>Developed by {genre.name}</div>
-            {isGamesLoading ? (
-              <p>Loading games...</p>
-            ) : isGamesError ? (
-              <p>Error loading games</p>
-            ) : (
-              games && (
-                <div className={cls.grid}>
-                  {games.results.map(game => (
-                    <div key={game.id}>
-                      <GameCard game={game} />
-                    </div>
-                  ))}
-                </div>
-              )
-            )}
+            <div className={cls.game_container}>
+              {isGamesLoading ? (
+                <p>Loading games...</p>
+              ) : isGamesError ? (
+                <p>Error loading games</p>
+              ) : (
+                games && (
+                  <div className={cls.grid}>
+                    {games.results.map(game => (
+                      <div key={game.id}>
+                        <GameCard game={game} />
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
+            </div>
           </div>
         )
       )}

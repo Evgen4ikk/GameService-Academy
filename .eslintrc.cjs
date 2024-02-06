@@ -22,7 +22,6 @@ module.exports = {
     semi: ['error', 'always'],
     quotes: ['error', 'single', { avoidEscape: true }],
     'object-property-newline': 'error',
-    'max-len': ['error', 150],
     'object-curly-spacing': ['error', 'always'],
     'modules-newlines/import-declaration-newline': 'error',
     'modules-newlines/export-declaration-newline': 'error',

@@ -1,5 +1,5 @@
 .card {
-  width: 380px;
+  max-width: 360px;
   border: none;
   border-radius: 15px;
   background-color: #202020;
@@ -17,6 +17,7 @@
     padding: 14px;
 
     .title {
+      max-width: 300px;
       font-size: 26px;
       font-weight: 700;
     }

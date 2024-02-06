@@ -20,11 +20,13 @@ export const Carousel: FC<AlbumProps> = ({ images }) => {
       >
         <Image width='100%' src={images.results[0].image} />
         <div className={cls.imageFlexContainer}>
-          {images.results.slice(1, images.results.length).map((img, index) => (
-            <div key={index} className={cls.imageContainer}>
-              <Image width='100px' src={img.image} />
-            </div>
-          ))}
+          {images.results
+            .slice(1, images.results.length - 1)
+            .map((img, index) => (
+              <div key={index} className={cls.imageContainer}>
+                <Image width='90px' src={img.image} />
+              </div>
+            ))}
         </div>
       </Image.PreviewGroup>
     </div>
