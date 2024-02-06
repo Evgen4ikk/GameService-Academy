@@ -1,5 +1,9 @@
 Требуется реализовать web-приложение - “витрину” игр наподобие https://rawg.io/ или https://web.archive.org/web/20180831053229/https://gamegid.online/ на базе API (https://rawg.io/apidocs).
 
+### Приложением можно воспользоваться по этой ссылке
+
+https://evgen4ikk.github.io/GameService-Academy/
+
 ## Приложение будет состоять из двух страниц:
 - главная, каталог игр:
     - Необходимый функционал
