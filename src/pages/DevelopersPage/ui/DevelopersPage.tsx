@@ -1,4 +1,5 @@
 import { DeveloperCard } from '@/entities/DeveloperCard';
+import Loader from '@/shared/ui/Loader/Loader';
 import { FC } from 'react';
 import { useFetchDevelopers } from '../model/service/useFetchDevelopers';
 import cls from './DevelopersPage.module.scss';
@@ -16,7 +17,7 @@ export const DevelopersPage: FC = () => {
   return (
     <div>
       {isDevelopersLoading ? (
-        <p>Loading developers...</p>
+        <Loader />
       ) : isDevelopersError ? (
         <p>Error loading developers</p>
       ) : (

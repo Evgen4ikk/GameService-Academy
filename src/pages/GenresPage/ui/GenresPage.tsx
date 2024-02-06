@@ -2,6 +2,7 @@ import { GenreCard } from '@/entities/GenreCard';
 import { useFetchGenres } from '@/widgets/Sidebar/model/service/UseFetchGenres';
 import { FC } from 'react';
 import cls from './GenresPage.module.scss';
+import Loader from '@/shared/ui/Loader/Loader'
 
 const GENRE_URL =
   'https://api.rawg.io/api/genres?key=6183de2c4b9c4eafad12e8de768dc4aa';
@@ -16,7 +17,7 @@ export const GenresPage: FC = () => {
   return (
     <div>
       {isGenresLoading ? (
-        <p>Loading genres...</p>
+        <Loader />
       ) : isGenresError ? (
         <p>Error loading dgenres</p>
       ) : (

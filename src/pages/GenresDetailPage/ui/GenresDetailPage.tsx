@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { FetchGamesByGenre } from '../model/FetchGamesByGenre';
 import { FetchGenreById } from '../model/FetchGenreById';
 import cls from './GenresDetailPage.module.scss';
+import Loader from '@/shared/ui/Loader/Loader'
 
 export const GenresDetailPage: FC = () => {
   const params = useParams();
@@ -29,7 +30,7 @@ export const GenresDetailPage: FC = () => {
   return (
     <>
       {isGenreLoading ? (
-        <p>Loading games...</p>
+        <Loader />
       ) : isGenreError ? (
         <p>Error loading games</p>
       ) : (
