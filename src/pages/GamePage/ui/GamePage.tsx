@@ -11,9 +11,13 @@ import cls from './GamePage.module.scss';
 
 export const GamePage: FC = () => {
   const params = useParams();
-  const GAME_URL = `https://api.rawg.io/api/games/${params.id}?key=6183de2c4b9c4eafad12e8de768dc4aa`;
+  const GAME_URL = `${import.meta.env.VITE_API_URL}/games/${params.id}?key=${
+    import.meta.env.VITE_API_KEY
+  }`;
 
-  const IMG_URL = `https://api.rawg.io/api/games/${params.id}/screenshots?key=6183de2c4b9c4eafad12e8de768dc4aa`;
+  const IMG_URL = `${import.meta.env.VITE_API_URL}/games/${
+    params.id
+  }/screenshots?key=${import.meta.env.VITE_API_KEY}`;
 
   const {
     isLoading: isGameLoading,

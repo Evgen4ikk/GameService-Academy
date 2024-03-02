@@ -1,4 +1,4 @@
-import { GameCard } from '@/entities/GameCard';
+import { GameCard } from '@/entities/Game';
 import { sortGames } from '@/shared/lib/SortGame/SortGame';
 import { useObserver } from '@/shared/lib/hooks/useObserver';
 import Loader from '@/shared/ui/Loader/Loader';
@@ -7,8 +7,6 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useFetchGames } from '../model/service/UseFetchGames';
 import { IGamesResult } from '../model/types/IGames';
 import cls from './GameList.module.scss';
-
-const API_KEY = '6183de2c4b9c4eafad12e8de768dc4aa';
 
 export const GameList: FC = () => {
   const [limit, setLimit] = useState(15);
@@ -19,7 +17,9 @@ export const GameList: FC = () => {
   const [sortedGames, setSortedGames] = useState<IGamesResult[]>([]);
   const [originalGames, setOriginalGames] = useState<IGamesResult[]>([]);
 
-  const URL = `https://api.rawg.io/api/games?key=${API_KEY}&page_size=${limit}&page=${page}`;
+  const URL = `${import.meta.env.VITE_API_URL}/games?key=${
+    import.meta.env.VITE_API_KEY
+  }&page_size=${limit}&page=${page}`;
 
   const {
     isLoading,

@@ -5,12 +5,10 @@ import { FetchGamesBySearch } from '../../model/FetchGamesBySearch';
 import HeaderSearchList from '../HeaderSearchList/HeaderSearchList';
 import cls from './HeaderSearch.module.scss';
 
-const API_KEY = '6183de2c4b9c4eafad12e8de768dc4aa';
-
 export const HeaderSearch: FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const searchListRef = useRef<HTMLDivElement>(null); // Ref for the search list
+  const searchListRef = useRef<HTMLDivElement>(null);
 
   const { isShow, ref: outsideRef, setIsShow } = useOutside(false);
 
@@ -28,7 +26,9 @@ export const HeaderSearch: FC = () => {
 
   const URL =
     searchTerm.trim() !== ''
-      ? `https://api.rawg.io/api/games?key=${API_KEY}&search=${searchQuery}`
+      ? `${import.meta.env.VITE_API_URL}/games?key=${
+          import.meta.env.VITE_API_KEY
+        }&search=${searchQuery}`
       : '';
 
   const { isLoading, isError, data: games } = FetchGamesBySearch(URL);
@@ -38,7 +38,6 @@ export const HeaderSearch: FC = () => {
     setSearchTerm(value);
   };
 
-  // Function to toggle visibility of search list
   const toggleSearchListVisibility = () => {
     setIsShow(!isShow);
   };
@@ -63,7 +62,11 @@ export const HeaderSearch: FC = () => {
                 <p>{games.results.length}</p>
               </div>
               {games.results.slice(0, 7).map(game => (
-                <HeaderSearchList key={game.id} game={game} onClose={toggleSearchListVisibility}/>
+                <HeaderSearchList
+                  key={game.id}
+                  game={game}
+                  onClose={toggleSearchListVisibility}
+                />
               ))}
             </div>
           )}

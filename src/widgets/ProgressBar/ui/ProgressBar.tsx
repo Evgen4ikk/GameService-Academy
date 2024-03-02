@@ -22,14 +22,6 @@ export const ProgressBar: FC<Props> = ({ ratings }) => {
             height: '50px',
             backgroundColor: getColor(rating),
             float: 'left',
-            //   borderStartStartRadius:
-            //     getColor(rating) === '#1ba344' ? '4px' : '0px',
-            //   borderBottomLeftRadius:
-            //     getColor(rating) === '#1ba344' ? '4px' : '0px',
-            //   borderTopRightRadius:
-            //     getColor(rating) === '#f62f3e' ? '4px' : '0px',
-            //   borderBottomRightRadius:
-            //     getColor(rating) === '#f62f3e' ? '4px' : '0px',
           }}
         />
       ))}

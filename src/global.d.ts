@@ -1,17 +1,14 @@
-// declare module "*.css";
-// declare module "*.scss";
+/// <reference types="vite/client" />
 
-/*
-declare module "*.css" {
-    const classes: { readonly [key: string]: string };
-    export default classes;
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  readonly VITE_API_KEY: string;
 }
 
-declare module '*.module.scss' {
-  const classes: { [key: string]: string };
-  export default classes;
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
-*/
+
 declare module '*.scss' {
   const classes: { [key: string]: string };
   export default classes;

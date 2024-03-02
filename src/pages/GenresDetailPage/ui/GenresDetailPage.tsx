@@ -1,19 +1,21 @@
-import { GameCard } from '@/entities/GameCard';
-import { FC, useState } from 'react';
+import { GameCard } from '@/entities/Game';
+import Loader from '@/shared/ui/Loader/Loader';
+import { FC } from 'react';
 import { useParams } from 'react-router';
 import { FetchGamesByGenre } from '../model/FetchGamesByGenre';
 import { FetchGenreById } from '../model/FetchGenreById';
 import cls from './GenresDetailPage.module.scss';
-import Loader from '@/shared/ui/Loader/Loader'
 
 export const GenresDetailPage: FC = () => {
   const params = useParams();
-  const [limit, setLimit] = useState(15);
-  const [page, setPage] = useState(1);
 
-  const GENRE_URL = `https://api.rawg.io/api/genres/${params.id}?key=6183de2c4b9c4eafad12e8de768dc4aa`;
+  const GENRE_URL = `${import.meta.env.VITE_API_URL}/genres/${params.id}?key=${
+    import.meta.env.VITE_API_KEY
+  }`;
 
-  const GAMES_URL = `https://api.rawg.io/api/games?genres=${params.slug}&key=6183de2c4b9c4eafad12e8de768dc4aa`;
+  const GAMES_URL = `${import.meta.env.VITE_API_URL}/games?genres=${
+    params.slug
+  }&key=${import.meta.env.VITE_API_KEY}`;
 
   const {
     isLoading: isGenreLoading,

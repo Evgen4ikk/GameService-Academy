@@ -1,18 +1,18 @@
-import { DeveloperCard } from '@/entities/DeveloperCard';
+import {
+  DeveloperCard,
+  getDeveloperData,
+  getDeveloperError,
+  getDeveloperIsLoading,
+} from '@/entities/Developer';
 import Loader from '@/shared/ui/Loader/Loader';
 import { FC } from 'react';
-import { useFetchDevelopers } from '../model/service/useFetchDevelopers';
+import { useSelector } from 'react-redux';
 import cls from './DevelopersPage.module.scss';
 
-const DEVELOPERS_URL =
-  'https://api.rawg.io/api/developers?key=6183de2c4b9c4eafad12e8de768dc4aa';
-
 export const DevelopersPage: FC = () => {
-  const {
-    isLoading: isDevelopersLoading,
-    data: developers,
-    isError: isDevelopersError,
-  } = useFetchDevelopers(DEVELOPERS_URL);
+  const developers = useSelector(getDeveloperData);
+  const isDevelopersError = useSelector(getDeveloperError);
+  const isDevelopersLoading = useSelector(getDeveloperIsLoading);
 
   return (
     <div>

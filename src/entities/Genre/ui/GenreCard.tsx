@@ -1,7 +1,7 @@
-import { IGenresResult } from '@/widgets/Sidebar/model/types/IGenres';
 import { FC } from 'react';
 import { CiUser } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
+import { IGenresResult } from '../model/types/genre';
 import cls from './GenreCard.module.scss';
 
 interface IGenreCard {

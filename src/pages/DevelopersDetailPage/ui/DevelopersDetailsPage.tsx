@@ -1,4 +1,4 @@
-import { GameCard } from '@/entities/GameCard';
+import { GameCard } from '@/entities/Game';
 import Loader from '@/shared/ui/Loader/Loader';
 import { FC } from 'react';
 import { useParams } from 'react-router';
@@ -9,7 +9,9 @@ import cls from './DevelopersDetailsPage.module.scss';
 export const DevelopersDetailsPage: FC = () => {
   const params = useParams();
 
-  const DEVELOPER_URL = `https://api.rawg.io/api/developers/${params.id}?key=6183de2c4b9c4eafad12e8de768dc4aa`;
+  const DEVELOPER_URL = `${import.meta.env.VITE_API_URL}/developers/${
+    params.id
+  }?key=${import.meta.env.VITE_API_KEY}`;
 
   const {
     isLoading: isDeveloperLoading,
@@ -17,7 +19,9 @@ export const DevelopersDetailsPage: FC = () => {
     isError: isDeveloperError,
   } = FetchDeveloperById(DEVELOPER_URL);
 
-  const GAMES_URL = `https://api.rawg.io/api/games?developers=${developer?.slug}&key=6183de2c4b9c4eafad12e8de768dc4aa`;
+  const GAMES_URL = `${import.meta.env.VITE_API_URL}/games?developers=${
+    developer?.slug
+  }&key=${import.meta.env.VITE_API_KEY}`;
 
   const {
     isLoading: isGamesLoading,

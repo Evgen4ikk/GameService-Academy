@@ -1,7 +1,7 @@
-import { IDevelopersResult } from '@/pages/DevelopersPage/model/types/IDevelopers';
 import { FC } from 'react';
 import { CiUser } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
+import { IDevelopersResult } from '../model/types/developer';
 import cls from './DeveloperCard.module.scss';
 
 interface IDeveloperCard {
