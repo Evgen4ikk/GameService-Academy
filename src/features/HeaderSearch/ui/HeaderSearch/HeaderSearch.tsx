@@ -4,6 +4,7 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { FetchGamesBySearch } from '../../model/FetchGamesBySearch';
 import HeaderSearchList from '../HeaderSearchList/HeaderSearchList';
 import cls from './HeaderSearch.module.scss';
+import { IGamesResult } from '@/entities/Game'
 
 export const HeaderSearch: FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -61,7 +62,7 @@ export const HeaderSearch: FC = () => {
                 <h3>Games:</h3>
                 <p>{games.results.length}</p>
               </div>
-              {games.results.slice(0, 7).map(game => (
+              {games.results.slice(0, 7).map((game: any) => (
                 <HeaderSearchList
                   key={game.id}
                   game={game}

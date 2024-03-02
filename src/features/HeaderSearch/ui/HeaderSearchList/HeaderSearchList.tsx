@@ -1,7 +1,7 @@
-import { IGamesResult } from '@/widgets/GameList/model/types/IGames';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import cls from './HeaderSearchList.module.scss';
+import { IGamesResult } from '@/entities/Game'
 
 interface IHeaderSearchList {
   game: IGamesResult;

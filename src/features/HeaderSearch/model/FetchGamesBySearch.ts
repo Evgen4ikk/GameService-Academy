@@ -1,5 +1,5 @@
+import { IGames } from '@/entities/Game'
 import { FetchHttpClient } from '@/shared/api/api';
-import { IGames } from '@/widgets/GameList/model/types/IGames';
 import { useEffect, useState } from 'react';
 
 export const FetchGamesBySearch = (

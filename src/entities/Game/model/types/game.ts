@@ -69,8 +69,6 @@ export interface IGamesResult {
 
 export interface IGames {
   count: number;
-  next: string;
-  previous: string;
   results: IGamesResult[];
 }
 
