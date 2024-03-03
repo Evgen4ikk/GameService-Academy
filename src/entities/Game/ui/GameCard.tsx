@@ -1,7 +1,7 @@
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { IGamesResult } from '../model/types/game';
+import { IGamesResult } from '../model/types/game/game';
 import cls from './GameCard.module.scss';
 
 interface IGameCard {

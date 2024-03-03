@@ -1,4 +1,4 @@
-import { IImages } from '@/pages/GamePage/model/types/IImages';
+import { IImages } from '@/entities/Image/model/types/image';
 import { Image } from 'antd';
 import { FC, useState } from 'react';
 import cls from './Carousel.module.scss';

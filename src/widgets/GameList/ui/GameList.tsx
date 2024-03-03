@@ -1,19 +1,24 @@
 import {
   GameCard,
+  fetchGames,
   getGameCurrentPage,
   getGameData,
   getGameError,
   getGameIsLoading,
 } from '@/entities/Game';
-import { fetchGames } from '@/entities/Game/model/services/fetchGames';
+import { IGamesResult } from '@/entities/Game/model/types/game/game';
+import { sortGames } from '@/shared/lib/SortGame/SortGame';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useObserver } from '@/shared/lib/hooks/useObserver';
 import Loader from '@/shared/ui/Loader/Loader';
-import { FC, useEffect, useRef } from 'react';
+import { CustomSelect } from '@/shared/ui/Select/Select';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './GameList.module.scss';
 
 export const GameList: FC = () => {
+  const [sortBy, setSortBy] = useState<string>('');
+  const [selectedPlatform, setSelectedPlatform] = useState<string>('');
   const dispatch = useAppDispatch();
   const games = useSelector(getGameData);
   const isLoading = useSelector(getGameIsLoading);
@@ -31,6 +36,16 @@ export const GameList: FC = () => {
     dispatch(fetchGames({ page: currentPage + 1, page_size: 15 }));
   });
 
+  const sortedGames = sortGames(games, sortBy, selectedPlatform);
+
+  const handleSortChange = (value: string) => {
+    setSortBy(value);
+  };
+
+  const handlePlatformChange = (value: string) => {
+    setSelectedPlatform(value);
+  };
+
   return (
     <>
       {isLoading && currentPage === 1 ? (
@@ -39,9 +54,9 @@ export const GameList: FC = () => {
         <p>Error loading games</p>
       ) : (
         <>
-          {/* <h1>Top picks</h1> */}
+          <h1>Top picks</h1>
           <div className={cls.select}>
-            {/* <CustomSelect
+            <CustomSelect
               placeholder='Sort By '
               options={[
                 { value: '', label: 'Default' },
@@ -49,7 +64,7 @@ export const GameList: FC = () => {
                 { value: 'highRating', label: 'High Rating' },
                 { value: 'releaseDate', label: 'Release Date' },
               ]}
-              // onChange={handleSortChange}
+              onChange={handleSortChange}
             />
             <CustomSelect
               placeholder='Select Platform'
@@ -67,11 +82,11 @@ export const GameList: FC = () => {
                 { value: 'nintendo', label: 'Nintendo' },
                 { value: 'web', label: 'Web' },
               ]}
-              // onChange={handlePlatformChange}
-            /> */}
+              onChange={handlePlatformChange}
+            />
           </div>
           <div className={cls.grid}>
-            {games?.map((game, index) => (
+            {sortedGames.map((game: IGamesResult, index: number) => (
               <div key={index}>
                 <GameCard game={game} />
               </div>

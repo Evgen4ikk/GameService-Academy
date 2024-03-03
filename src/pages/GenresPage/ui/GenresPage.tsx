@@ -16,7 +16,7 @@ export const GenresPage: FC = () => {
   const isGenresLoading = useSelector(getGenreIsLoading);
 
   return (
-    <div>
+    <div className={cls.container}>
       {isGenresLoading ? (
         <Loader />
       ) : isGenresError ? (

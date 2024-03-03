@@ -1,4 +1,4 @@
-import { IGamesResult } from '@/widgets/GameList/model/types/IGames';
+import { IGamesResult } from '@/entities/Game/model/types/game/game';
 
 export const sortGames = (
   games: IGamesResult[],

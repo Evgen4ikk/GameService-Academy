@@ -1,6 +1,18 @@
-import { IGames } from '@/entities/Game'
-import { FetchHttpClient } from '@/shared/api/api';
+import { IGames } from '@/entities/Game';
 import { useEffect, useState } from 'react';
+
+class FetchHttpClient {
+  async fetch(url: string, options: RequestInit = {}): Promise<Response> {
+    const response = await fetch(url, options);
+    return response;
+  }
+
+  async get<T>(url: string, options: RequestInit = {}): Promise<T> {
+    const response = await this.fetch(url, options);
+    const data = await response.json();
+    return data as T;
+  }
+}
 
 export const FetchGamesBySearch = (
   url: string

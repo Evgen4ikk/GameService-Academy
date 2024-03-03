@@ -1,7 +1,9 @@
-import { getDeveloperData, getDeveloperError } from '@/entities/Developer';
-import { fetchDevelopers } from '@/entities/Developer/model/services/fetchDevelopers';
-import { getGenreData, getGenreError } from '@/entities/Genre';
-import { fetchGenres } from '@/entities/Genre/model/services/fetchGenres';
+import {
+  fetchDevelopers,
+  getDeveloperData,
+  getDeveloperError,
+} from '@/entities/Developer';
+import { fetchGenres, getGenreData, getGenreError } from '@/entities/Genre';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useEffect, useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';

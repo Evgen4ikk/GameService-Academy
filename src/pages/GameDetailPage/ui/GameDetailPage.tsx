@@ -1,35 +1,37 @@
+import {
+  fetchGamesById,
+  getGameDetailData,
+  getGameDetailError,
+  getGameDetailIsLoading,
+} from '@/entities/Game';
+import { fetchImages, getImageData, getImageIsLoading } from '@/entities/Image';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import Loader from '@/shared/ui/Loader/Loader';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Carousel } from '@/widgets/Carousel';
 import { ProgressBar } from '@/widgets/ProgressBar';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { FetchGameById } from '../model/service/FetchGameById';
-import { FetchImagesById } from '../model/service/FetchImagesById';
-import cls from './GamePage.module.scss';
+import cls from './GameDetailPage.module.scss';
 
-export const GamePage: FC = () => {
+export const GameDetailPage: FC = () => {
   const params = useParams();
-  const GAME_URL = `${import.meta.env.VITE_API_URL}/games/${params.id}?key=${
-    import.meta.env.VITE_API_KEY
-  }`;
+  const id = Number(params.id);
 
-  const IMG_URL = `${import.meta.env.VITE_API_URL}/games/${
-    params.id
-  }/screenshots?key=${import.meta.env.VITE_API_KEY}`;
+  const dispatch = useAppDispatch();
+  const game = useSelector(getGameDetailData);
+  const isGameLoading = useSelector(getGameDetailIsLoading);
+  const isGameError = useSelector(getGameDetailError);
 
-  const {
-    isLoading: isGameLoading,
-    data: game,
-    isError: isGameError,
-  } = FetchGameById(GAME_URL);
+  const images = useSelector(getImageData);
+  const isImagesLoading = useSelector(getImageIsLoading);
 
-  const {
-    isLoading: isImagesLoading,
-    data: images,
-    isError: isImagesError,
-  } = FetchImagesById(IMG_URL);
+  useEffect(() => {
+    dispatch(fetchGamesById({ id }));
+    dispatch(fetchImages({ id }));
+  }, [dispatch]);
 
   const capitalizeFirstLetter = (str: string): string => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -37,7 +39,7 @@ export const GamePage: FC = () => {
 
   return (
     <>
-      {isGameLoading ? (
+      {isGameLoading && isImagesLoading ? (
         <Loader />
       ) : isGameError ? (
         <p>Error loading games</p>

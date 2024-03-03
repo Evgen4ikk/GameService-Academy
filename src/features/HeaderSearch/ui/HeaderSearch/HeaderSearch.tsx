@@ -4,7 +4,6 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { FetchGamesBySearch } from '../../model/FetchGamesBySearch';
 import HeaderSearchList from '../HeaderSearchList/HeaderSearchList';
 import cls from './HeaderSearch.module.scss';
-import { IGamesResult } from '@/entities/Game'
 
 export const HeaderSearch: FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,7 +48,7 @@ export const HeaderSearch: FC = () => {
         value={searchTerm}
         onChange={handleInputChange}
         type='text'
-        placeholder='Введите что-то'
+        placeholder='Введите название игры'
         onClick={toggleSearchListVisibility}
       />
       {isShow && games && games.results && searchTerm.trim() !== '' && (

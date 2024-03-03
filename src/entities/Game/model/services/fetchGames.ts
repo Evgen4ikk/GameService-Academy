@@ -1,6 +1,6 @@
 import { $api } from '@/shared/api/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IGames } from '../types/game';
+import { IGames } from '../types/game/game';
 
 export const fetchGames = createAsyncThunk(
   'games/fetchGames',

@@ -5,7 +5,7 @@ const { Option } = Select;
 interface SelectProps {
   placeholder: string;
   options: { value: string; label: string }[];
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
 }
 
 export const CustomSelect = (props: SelectProps) => {
@@ -13,7 +13,7 @@ export const CustomSelect = (props: SelectProps) => {
 
   return (
     <Select
-      style={{ width: '150px'}}
+      style={{ width: '150px' }}
       placeholder={placeholder}
       onChange={onChange}
     >

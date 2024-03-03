@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchGames } from '../services/fetchGames';
-import { GameSchema } from '../types/gameSchema';
+import { GameSchema } from '../types/game/gameSchema';
 
 const initialState: GameSchema = {
   isLoading: false,

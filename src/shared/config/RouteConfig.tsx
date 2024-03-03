@@ -1,6 +1,6 @@
 import { DevelopersDetailsPage } from '@/pages/DevelopersDetailPage';
 import { DevelopersPage } from '@/pages/DevelopersPage';
-import { GamePage } from '@/pages/GamePage/inedx';
+import { GameDetailPage } from '@/pages/GameDetailPage/inedx';
 import { GenresDetailPage } from '@/pages/GenresDetailPage';
 import { GenresPage } from '@/pages/GenresPage';
 import { MainPage } from '@/pages/MainPage';
@@ -11,7 +11,7 @@ export enum AppRoutes {
   DEVELOPERS_DETAILS = 'developers_details',
   GENRES = 'genres',
   GENRES_DETAILS = 'genres_details',
-  GAME = 'game',
+  GAME_DETAILS = 'game_details',
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
@@ -20,7 +20,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.DEVELOPERS_DETAILS]: '/developers/', // /+slug
   [AppRoutes.GENRES]: '/genres',
   [AppRoutes.GENRES_DETAILS]: '/genre/', // /+slug
-  [AppRoutes.GAME]: '/game/', // /+slug
+  [AppRoutes.GAME_DETAILS]: '/game/', // /+slug
 };
 
 export const routeConfig: Record<AppRoutes, any> = {
@@ -44,8 +44,8 @@ export const routeConfig: Record<AppRoutes, any> = {
     path: `${RoutePath.genres_details}:slug/:id`,
     element: <GenresDetailPage />,
   },
-  [AppRoutes.GAME]: {
-    path: `${RoutePath.game}:slug/:id`,
-    element: <GamePage />,
+  [AppRoutes.GAME_DETAILS]: {
+    path: `${RoutePath.game_details}:slug/:id`,
+    element: <GameDetailPage />,
   },
 };

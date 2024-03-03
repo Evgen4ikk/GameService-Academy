@@ -14,7 +14,6 @@ const genreSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-       //Genres
       .addCase(fetchGenres.pending, state => {
         state.isLoading = true;
         state.error = undefined;

@@ -1,33 +1,42 @@
-import { GameCard } from '@/entities/Game';
+import {
+  GameCard,
+  fetchGamesByGenre,
+  getGameByGenreData,
+  getGameByGenreError,
+  getGameByGenreIsLoading,
+} from '@/entities/Game';
+import {
+  fetchGenresById,
+  getGenreDetailData,
+  getGenreDetailError,
+  getGenreDetailIsLoading,
+} from '@/entities/Genre';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import Loader from '@/shared/ui/Loader/Loader';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { FetchGamesByGenre } from '../model/FetchGamesByGenre';
-import { FetchGenreById } from '../model/FetchGenreById';
 import cls from './GenresDetailPage.module.scss';
 
 export const GenresDetailPage: FC = () => {
   const params = useParams();
+  const id = Number(params.id);
+  const genres = String(params.slug);
 
-  const GENRE_URL = `${import.meta.env.VITE_API_URL}/genres/${params.id}?key=${
-    import.meta.env.VITE_API_KEY
-  }`;
+  const dispatch = useAppDispatch();
 
-  const GAMES_URL = `${import.meta.env.VITE_API_URL}/games?genres=${
-    params.slug
-  }&key=${import.meta.env.VITE_API_KEY}`;
+  const genre = useSelector(getGenreDetailData);
+  const isGenreLoading = useSelector(getGenreDetailIsLoading);
+  const isGenreError = useSelector(getGenreDetailError);
 
-  const {
-    isLoading: isGenreLoading,
-    data: genre,
-    isError: isGenreError,
-  } = FetchGenreById(GENRE_URL);
+  const games = useSelector(getGameByGenreData);
+  const isGamesLoading = useSelector(getGameByGenreIsLoading);
+  const isGamesError = useSelector(getGameByGenreError);
 
-  const {
-    isLoading: isGamesLoading,
-    data: games,
-    isError: isGamesError,
-  } = FetchGamesByGenre(GAMES_URL);
+  useEffect(() => {
+    dispatch(fetchGenresById({ id }));
+    dispatch(fetchGamesByGenre({ genres }));
+  }, [dispatch]);
 
   return (
     <>

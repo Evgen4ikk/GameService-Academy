@@ -1,37 +1,46 @@
-import { GameCard } from '@/entities/Game';
+import {
+  fetchDevelopersById,
+  getDeveloperDetailData,
+  getDeveloperDetailError,
+  getDeveloperDetailIsLoading,
+} from '@/entities/Developer';
+import {
+  GameCard,
+  fetchGamesByDeveloper,
+  getGameByDeveloperData,
+  getGameByDeveloperError,
+  getGameByDeveloperIsLoading,
+} from '@/entities/Game';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import Loader from '@/shared/ui/Loader/Loader';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { FetchDeveloperById } from '../model/service/FetchDeveloperById';
-import { FetchGamesByDeveloper } from '../model/service/FetchGamesByDeveloper';
 import cls from './DevelopersDetailsPage.module.scss';
 
 export const DevelopersDetailsPage: FC = () => {
   const params = useParams();
+  const id = Number(params.id);
+  const developers = String(params.slug);
 
-  const DEVELOPER_URL = `${import.meta.env.VITE_API_URL}/developers/${
-    params.id
-  }?key=${import.meta.env.VITE_API_KEY}`;
+  const dispatch = useAppDispatch();
 
-  const {
-    isLoading: isDeveloperLoading,
-    data: developer,
-    isError: isDeveloperError,
-  } = FetchDeveloperById(DEVELOPER_URL);
+  const developer = useSelector(getDeveloperDetailData);
+  const isDeveloperLoading = useSelector(getDeveloperDetailIsLoading);
+  const isDeveloperError = useSelector(getDeveloperDetailError);
 
-  const GAMES_URL = `${import.meta.env.VITE_API_URL}/games?developers=${
-    developer?.slug
-  }&key=${import.meta.env.VITE_API_KEY}`;
+  const games = useSelector(getGameByDeveloperData);
+  const isGamesLoading = useSelector(getGameByDeveloperIsLoading);
+  const isGamesError = useSelector(getGameByDeveloperError);
 
-  const {
-    isLoading: isGamesLoading,
-    data: games,
-    isError: isGamesError,
-  } = FetchGamesByDeveloper(GAMES_URL);
+  useEffect(() => {
+    dispatch(fetchDevelopersById({ id }));
+    dispatch(fetchGamesByDeveloper({ developers }));
+  }, [dispatch]);
 
   return (
     <>
-      {isDeveloperLoading ? (
+      {isDeveloperLoading && isGamesLoading ? (
         <Loader />
       ) : isDeveloperError ? (
         <p>Error loading games</p>
@@ -63,9 +72,7 @@ export const DevelopersDetailsPage: FC = () => {
               </div>
             </div>
             <div className={cls.heading}>Developed by {developer.name}</div>
-            {isGamesLoading ? (
-              <p>Loading games...</p>
-            ) : isGamesError ? (
+            {isGamesError ? (
               <p>Error loading games</p>
             ) : (
               games && (

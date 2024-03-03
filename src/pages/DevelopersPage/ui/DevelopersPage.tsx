@@ -15,7 +15,7 @@ export const DevelopersPage: FC = () => {
   const isDevelopersLoading = useSelector(getDeveloperIsLoading);
 
   return (
-    <div>
+    <div className={cls.container}>
       {isDevelopersLoading ? (
         <Loader />
       ) : isDevelopersError ? (

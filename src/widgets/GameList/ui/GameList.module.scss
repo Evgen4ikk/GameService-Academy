@@ -1,16 +1,19 @@
 .grid {
+  width: 100%;
   display: grid;
-  grid-gap: 0 24px;
   grid-template-columns: repeat(3, 360px);
+  grid-column-gap: 18px;
+  grid-row-gap: 20px;
 
   @media screen and (min-width: 1980px) {
     grid-template-columns: repeat(4, 360px);
   }
-  @media screen and (max-width: 1659px) {
+
+  @media screen and (max-width: 1380px) {
     grid-template-columns: repeat(2, 360px);
   }
 
-  @media screen and (max-width: 742px) {
+  @media screen and (max-width: 780px) {
     grid-template-columns: repeat(1, 360px);
   }
 }
