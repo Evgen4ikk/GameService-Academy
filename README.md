@@ -2,7 +2,7 @@
 
 ### Приложением можно воспользоваться по этой ссылке
 
-https://evgen4ikk.github.io/GameService-Academy/
+## Preview site [Game Service]([/user/repository_name/wiki/page_name#title](https://65e490b2d2776b99ccfb3aaa--bejewelled-sunshine-3e54a2.netlify.app/)).
 
 ## Приложение будет состоять из двух страниц:
 - главная, каталог игр:
